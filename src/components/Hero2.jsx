@@ -241,13 +241,12 @@ if (loading) {
         className="
           mt-2
           text-[#6B5B52]
-          tracking-[6px]
           uppercase
           text-xs md:text-sm
           z-10
         "
       >
-        Loading Experience
+        Loading nya agak lama nihh jadi sabar yahh👍
       </p>
 
     </div>

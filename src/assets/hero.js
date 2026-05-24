@@ -13,6 +13,26 @@ import ashtray from "../assets/images/ahstray.png";
 import PhotoProfileS from "../assets/images/fotoProfilSkecth.jpg";
 import PhotoProfile from "../assets/images/fotoProfil.jpeg";
 
+// payroll app
+import payroll1 from "../assets/images/PayrollApp/img1.png";
+// qplus app
+import qplusThumbnail from "../assets/images/QplusApp/thumbnail.png";
+
+// kerjakeun app
+import kerjakeunThumbnail from "../assets/images/KerjakeunApp/thumbnail.png";
+
+// jalansehatistimewa
+import jalansehatThumbnail from "../assets/images/JalanSehatIstimewa/thumbnail.png";
+
+// amaliah finance
+import amaliahThumbnail from "../assets/images/AmaliahFinance/tumbnail.png"
+
+// other
+
+import other1 from "../assets/images/lainnya/img1.jpeg"
+import other2 from "../assets/images/lainnya/img2.png"
+import other3 from "../assets/images/lainnya/img3.jpeg"
+
 export const heroAssets = [
   dirt,
   mount1,
@@ -27,5 +47,14 @@ export const heroAssets = [
   smoke,
   ashtray,
   PhotoProfile,
-  PhotoProfileS
+  PhotoProfileS,
+  payroll1,
+  qplusThumbnail,
+  kerjakeunThumbnail,
+  jalansehatThumbnail,
+  jalansehatThumbnail,
+  amaliahThumbnail,
+  other1,
+  other2,
+  other3
 ];
