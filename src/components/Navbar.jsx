@@ -1,23 +1,8 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const scrollToSection = (id) => {
-    const target = document.querySelector(id);
-    if (!target) return;
-
-    const offsetTop = target.offsetTop;
-
-    window.scrollTo({
-      top: offsetTop,
-      behavior: "smooth",
-    });
-
-    setOpen(false);
-  };
 
   return (
     <nav
@@ -30,40 +15,62 @@ export default function Navbar() {
       "
       style={{ fontFamily: "Lora, serif" }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        
+      <div
+        className="
+          max-w-7xl mx-auto
+          flex items-center justify-between
+        "
+      >
+
         {/* LOGO */}
         <h1 className="text-[#4B352A] text-lg sm:text-xl md:text-2xl">
           Almutakin
         </h1>
 
         {/* DESKTOP MENU */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-10 text-[#4B352A] text-sm md:text-base">
-
-          <button
-            onClick={() => scrollToSection("#home")}
-            className="hover:-translate-y-1 hover:opacity-70 transition-all duration-300"
+        <div
+          className="
+            hidden md:flex
+            items-center gap-6 lg:gap-10
+            text-[#4B352A]
+            text-sm md:text-base
+          "
+        >
+          <Link
+            to="/home"
+            className="
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:opacity-70
+            "
           >
             Home
-          </button>
+          </Link>
 
-          <button
-            onClick={() => scrollToSection("#about")}
-            className="hover:-translate-y-1 hover:opacity-70 transition-all duration-300"
+          <Link
+            to="/#about"
+            className="
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:opacity-70
+            "
           >
             About
-          </button>
+          </Link>
 
-          <button
-            onClick={() => scrollToSection("#contact")}
-            className="hover:-translate-y-1 hover:opacity-70 transition-all duration-300"
+          <Link
+            to="/#contact"
+            className="
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:opacity-70
+            "
           >
             Contact
-          </button>
+          </Link>
 
-          {/* PROJECT BUTTON */}
-          <button
-            onClick={() => navigate("/project")}
+          <Link
+            to="/project"
             className="
               px-4 py-2
               border border-[#4B352A]
@@ -73,13 +80,17 @@ export default function Navbar() {
             "
           >
             Projects
-          </button>
+          </Link>
         </div>
 
         {/* MOBILE BUTTON */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-[#4B352A] text-3xl"
+          className="
+            md:hidden
+            text-[#4B352A]
+            text-3xl
+          "
         >
           ☰
         </button>
@@ -90,7 +101,8 @@ export default function Navbar() {
         className={`
           md:hidden
           absolute left-1/2 -translate-x-1/2
-          mt-4 w-[90%]
+          mt-4
+          w-[90%]
           bg-[#FCF8F5]
           border border-[#C1B5A0]
           shadow-xl
@@ -106,33 +118,21 @@ export default function Navbar() {
       >
         <div className="flex flex-col p-6 gap-5 text-[#4B352A]">
 
-          <button
-            onClick={() => scrollToSection("#home")}
-            className="text-left"
-          >
+          <Link to="/#home" className="text-left">
             Home
-          </button>
+          </Link>
 
-          <button
-            onClick={() => scrollToSection("#about")}
-            className="text-left"
-          >
+          <Link to="/#about" className="text-left">
             About
-          </button>
+          </Link>
 
-          <button
-            onClick={() => scrollToSection("#contact")}
-            className="text-left"
-          >
+          <Link to="/#contact" className="text-left">
             Contact
-          </button>
+          </Link>
 
-          {/* MOBILE PROJECT BUTTON */}
-          <button
-            onClick={() => {
-              setOpen(false);
-              navigate("/project");
-            }}
+          <Link
+            to="/project"
+            onClick={() => setOpen(false)}
             className="
               border border-[#4B352A]
               px-4 py-2
@@ -140,8 +140,7 @@ export default function Navbar() {
             "
           >
             Projects
-          </button>
-
+          </Link>
         </div>
       </div>
     </nav>

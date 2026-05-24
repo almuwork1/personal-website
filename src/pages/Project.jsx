@@ -4,15 +4,17 @@ import payroll1 from '../assets/images/PayrollApp/img1.png';
 import { projects } from "../data/projects";
 import { Link } from "react-router-dom";
 
+
 export default function Project() {
+  
   const [previewImage, setPreviewImage] = useState(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    if (!window.location.hash.includes("refreshed")) {
+      window.location.hash += "?refreshed";
+      window.location.reload();
+    }
   }, []);
-
   const handlePreviewOpen = (image) => {
     setPreviewImage(image);
   };
