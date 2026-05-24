@@ -4,6 +4,50 @@ import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  const scrollToSection = (id) => {
+    const target = document.querySelector(id);
+
+    if (!target) return;
+
+    const wrapper = document.querySelector(".wrapper");
+
+    if (!wrapper) return;
+
+    const totalWidth = Array.from(wrapper.children).reduce(
+      (total, section) => total + section.offsetWidth,
+      0
+    );
+
+    const maxDelta = Math.max(
+      0,
+      totalWidth - window.innerWidth
+    );
+
+    const offsetLeft = target.offsetLeft;
+
+    const clampedOffset = Math.min(
+      Math.max(0, offsetLeft),
+      maxDelta
+    );
+
+    const container =
+      wrapper.parentElement;
+
+    const containerTop =
+      container.getBoundingClientRect().top +
+      window.scrollY;
+
+    const targetScrollY =
+      containerTop + clampedOffset;
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: "smooth",
+    });
+
+    setOpen(false);
+  };
+
   return (
     <nav
       className="
@@ -36,8 +80,9 @@ export default function Navbar() {
             text-sm md:text-base
           "
         >
-          <Link
-            to="/home"
+
+          <button
+            onClick={() => scrollToSection("#home")}
             className="
               transition-all duration-300
               hover:-translate-y-1
@@ -45,10 +90,10 @@ export default function Navbar() {
             "
           >
             Home
-          </Link>
+          </button>
 
-          <Link
-            to="/#about"
+          <button
+            onClick={() => scrollToSection("#about")}
             className="
               transition-all duration-300
               hover:-translate-y-1
@@ -56,10 +101,10 @@ export default function Navbar() {
             "
           >
             About
-          </Link>
+          </button>
 
-          <Link
-            to="/#contact"
+          <button
+            onClick={() => scrollToSection("#contact")}
             className="
               transition-all duration-300
               hover:-translate-y-1
@@ -67,7 +112,7 @@ export default function Navbar() {
             "
           >
             Contact
-          </Link>
+          </button>
 
           <Link
             to="/project"
@@ -118,17 +163,26 @@ export default function Navbar() {
       >
         <div className="flex flex-col p-6 gap-5 text-[#4B352A]">
 
-          <Link to="/#home" className="text-left">
+          <button
+            onClick={() => scrollToSection("#home")}
+            className="text-left"
+          >
             Home
-          </Link>
+          </button>
 
-          <Link to="/#about" className="text-left">
+          <button
+            onClick={() => scrollToSection("#about")}
+            className="text-left"
+          >
             About
-          </Link>
+          </button>
 
-          <Link to="/#contact" className="text-left">
+          <button
+            onClick={() => scrollToSection("#contact")}
+            className="text-left"
+          >
             Contact
-          </Link>
+          </button>
 
           <Link
             to="/project"

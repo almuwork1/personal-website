@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { heroAssets } from "../assets/hero.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,49 @@ import Navbar from "./Navbar";
 export default function Hero() {
   const containerRef = useRef();
 
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+useEffect(() => {
+
+  const images = [
+    aboutBG,
+    ...heroAssets,
+  ];
+
+  let loadedCount = 0;
+
+  images.forEach((src) => {
+
+    const img = new Image();
+
+    img.src = src;
+
+    img.onload = () => {
+
+      loadedCount++;
+
+      const percent = Math.round(
+        (loadedCount / images.length) * 100
+      );
+
+      setProgress(percent);
+
+      if (loadedCount === images.length) {
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+
+      }
+    };
+
+  });
+
+}, []);
+
   useEffect(() => {
+    if (loading) return;
   const ctx = gsap.context(() => {
     const sections = gsap.utils.toArray(".panel");
 
@@ -59,7 +102,7 @@ export default function Hero() {
 
   ctx.revert();
   };
-}, []);
+}, [loading]);
 
 useEffect(() => {
   const scrollToHash = () => {
@@ -130,7 +173,86 @@ useEffect(() => {
       scrollToHash
     );
 }, []);
+if (loading) {
+  return (
+    <div
+      className="
+        fixed inset-0 z-[99999]
+        bg-[#FCF8F5]
+        flex flex-col items-center justify-center
+        overflow-hidden
+      "
+      style={{ fontFamily: "Lora, serif" }}
+    >
 
+
+      {/* TITLE */}
+      <h1
+        className="
+          text-[#4B352A]
+          text-3xl md:text-5xl
+          tracking-[10px]
+          uppercase
+          mb-10
+          z-10
+        "
+      >
+        LOADING
+      </h1>
+
+      {/* PROGRESS BAR */}
+      <div
+        className="
+          w-[250px] md:w-[350px]
+          h-[3px]
+          bg-[#D8CFC3]
+          overflow-hidden
+          relative
+          z-10
+        "
+      >
+
+        <div
+          className="
+            h-full
+            bg-[#4B352A]
+            transition-all duration-300
+          "
+          style={{
+            width: `${progress}%`,
+          }}
+        />
+      </div>
+
+      {/* PERCENT */}
+      <p
+        className="
+          mt-4
+          text-[#4B352A]
+          text-sm
+          tracking-[4px]
+        "
+      >
+        {progress}%
+      </p>
+
+      {/* TEXT */}
+      <p
+        className="
+          mt-2
+          text-[#6B5B52]
+          tracking-[6px]
+          uppercase
+          text-xs md:text-sm
+          z-10
+        "
+      >
+        Loading Experience
+      </p>
+
+    </div>
+  );
+}
   return (
     <>
       <Navbar />
