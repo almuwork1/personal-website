@@ -160,32 +160,32 @@ export default function ProjectDetail() {
         <div className="max-w-7xl mx-auto">
 
           {/* BACK BUTTON */}
-          <a href="/project">
-          <button className="py-3 cursor-pointer text-[#4B352A] transition-colors flex items-center justify-center gap-x-1 text-sm md:text-base">
+          <Link to="/project">
+            <button className="py-3 cursor-pointer text-[#4B352A] transition-colors flex items-center justify-center gap-x-1 text-sm md:text-base">
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="-102.4 -102.4 1228.80 1228.80"
-              fill="#4B352A"
-              stroke="#4B352A"
-            >
-              <g>
-                <path
-                  fill="#4B352A"
-                  d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
-                />
-                <path
-                  fill="#4B352A"
-                  d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
-                />
-              </g>
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20px"
+                height="20px"
+                viewBox="-102.4 -102.4 1228.80 1228.80"
+                fill="#4B352A"
+                stroke="#4B352A"
+              >
+                <g>
+                  <path
+                    fill="#4B352A"
+                    d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                  />
+                  <path
+                    fill="#4B352A"
+                    d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                  />
+                </g>
+              </svg>
 
-            Back to Projects
-          </button>
-          </a>
+              Back to Projects
+            </button>
+          </Link>
 
           {/* COPYRIGHT */}
           <div className="flex text-xs justify-between gap-4 md:gap-6 py-5 px-0 border-t-2 border-[#C1B5A0] mt-3 sm:text-sm md:text-base">
